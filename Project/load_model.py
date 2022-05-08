@@ -1,5 +1,7 @@
 import pickle
 import pandas as pd
+
+
 filename = 'finalized_model.sav'
 loaded_model = pickle.load(open(filename, 'rb'))
 # 'Income', 'House_age', 'Number_of_rooms', 'Number_of_bedrooms', 'Population'
@@ -15,5 +17,5 @@ def model_operation(income, house_age,number_of_rooms, number_of_bedrooms,popula
                      'Number_of_bedrooms':number_of_bedrooms,
                      "Polulation":population}
     predict_data=pd.DataFrame(predict_data,index=[0])
-    result=loaded_model.predict(predict_data)
+    result=loaded_model.predict(predict_data)[0][0]
     return result
